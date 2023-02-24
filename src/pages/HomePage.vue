@@ -22,7 +22,9 @@
       </div>
       <!-- ADS SECTION -->
       <div class="col-3">
-
+        <div v-for="ad in ads">
+          <AdCard :ad="ad"/>
+        </div>
       </div>
 
     </div>
@@ -37,6 +39,8 @@ import { AppState } from '../AppState.js';
 import Pop from '../utils/Pop.js';
 import PostCard from '../components/PostCard.vue';
 import { logger } from '../utils/Logger.js';
+import { adsService } from '../services/AdsService.js';
+import AdCard from '../components/AdCard.vue';
 
 export default {
   setup() {
@@ -48,14 +52,23 @@ export default {
         Pop.error(error, "[getting posts]");
       }
     }
+    async function getAds() {
+      try {
+        await adsService.getAds()
+      } catch (error) {
+        Pop.error(error, '[getting ads]')
+      }
+    }
     onMounted(() => {
       getPosts();
+      getAds()
     });
     return {
       posts: computed(() => AppState.posts),
       page: computed(() => AppState.postsPage),
       older: computed(() => AppState.olderPage),
       newer: computed(() => AppState.newerPage),
+      ads: computed(() => AppState.ads),
 
       async changePage(direction) {
 
@@ -74,7 +87,7 @@ export default {
       }
     };
   },
-  components: { PostCard }
+  components: { PostCard, AdCard }
 }
 </script>
 
