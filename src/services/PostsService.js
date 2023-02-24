@@ -22,6 +22,16 @@ class PostsService {
         AppState.newerPage = res.data.newer
     }
 
+    async searchPosts(searchData) {
+        logger.log(searchData)
+        const res = await api.get('api/posts', { params: { query: searchData.query } })
+        logger.log(res.data, '[getting posts by query')
+        AppState.posts = res.data.posts.map(p => new Post(p))
+        AppState.postsPage = res.data.page
+        AppState.olderPage = res.data.older
+        AppState.newerPage = res.data.newer
+    }
+
     async changePage(direction) {
         const res = await api.get(direction)
         logger.log(res.data)
@@ -35,6 +45,8 @@ class PostsService {
         const res = await api.post('api/posts', formData)
         logger.log(res.data, '[creating post]')
     }
+
+
 }
 
 export const postsService = new PostsService()

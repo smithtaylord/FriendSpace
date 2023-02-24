@@ -2,12 +2,7 @@
     <div v-if="profile" class="ProfilePage container-fluid">
         <!-- Profile Section -->
         <div class="row">
-            <div class="col-12">
-                <div>
-                    <img :src="profile.picture" alt="">
-                    <h1>{{ profile.name }}</h1>
-                </div>
-            </div>
+            <ProfileDetails />
         </div>
         <!-- Create Post Section -->
         <div class="row">

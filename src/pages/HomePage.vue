@@ -1,6 +1,17 @@
 <template>
   <div class="container-fluid">
     <div class="row">
+      <div class="col-md-6 offset-md-6">
+        <form @submit.prevent="searchPosts">
+          <div class="input-group mb-3">
+            <input v-model="editable.query" type="text" class="form-control" placeholder="search...."
+              aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-secondary" type="submit" id="button-addon2"><i class="mdi mdi-magnify"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
       <!-- Posts Section -->
       <div class="col-9">
         <div v-for="p in posts" class="border border-dark rounded my-3 p-4">
@@ -23,7 +34,7 @@
       <!-- ADS SECTION -->
       <div class="col-3">
         <div v-for="ad in ads">
-          <AdCard :ad="ad"/>
+          <AdCard :ad="ad" />
         </div>
       </div>
 
@@ -33,7 +44,7 @@
 </template>
 
 <script>
-import { onMounted, computed } from 'vue';
+import { onMounted, computed, ref } from 'vue';
 import { postsService } from '../services/PostsService.js';
 import { AppState } from '../AppState.js';
 import Pop from '../utils/Pop.js';
@@ -44,6 +55,7 @@ import AdCard from '../components/AdCard.vue';
 
 export default {
   setup() {
+    const editable = ref({})
     async function getPosts() {
       try {
         await postsService.getPosts();
@@ -69,6 +81,7 @@ export default {
       older: computed(() => AppState.olderPage),
       newer: computed(() => AppState.newerPage),
       ads: computed(() => AppState.ads),
+      editable,
 
       async changePage(direction) {
 
@@ -83,6 +96,14 @@ export default {
 
         } catch (error) {
           Pop.error(error, '[change page]')
+        }
+      },
+      async searchPosts() {
+        try {
+          let searchData = editable.value
+          await postsService.searchPosts(searchData)
+        } catch (error) {
+          Pop.error(error, '[search posts]')
         }
       }
     };

@@ -57,7 +57,7 @@ export default {
 }
 
 .post-picture {
-    height: 20vh;
+    height: 30vh;
     width: 100%;
     object-fit: cover;
 }
