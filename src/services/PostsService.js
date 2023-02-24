@@ -29,8 +29,11 @@ class PostsService {
         AppState.postsPage = res.data.page
         AppState.olderPage = res.data.older
         AppState.newerPage = res.data.newer
+    }
 
-
+    async createPost(formData) {
+        const res = await api.post('api/posts', formData)
+        logger.log(res.data, '[creating post]')
     }
 }
 
