@@ -13,6 +13,15 @@ class PostsService {
         AppState.newerPage = res.data.newer
     }
 
+    async getPostsByCreatorId(profileId) {
+        const res = await api.get('api/posts', { params: { creatorId: profileId } })
+        logger.log(res.data, '[getting posts by creator id]')
+        AppState.posts = res.data.posts.map(p => new Post(p))
+        AppState.postsPage = res.data.page
+        AppState.olderPage = res.data.older
+        AppState.newerPage = res.data.newer
+    }
+
     async changePage(direction) {
         const res = await api.get(direction)
         logger.log(res.data)

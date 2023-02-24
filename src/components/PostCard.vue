@@ -3,7 +3,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex gap-5">
-                    <img :src="post.creator.picture" alt="" class="rounded-circle profile-picture">
+                    <router-link :to="{ name: 'Profile', params: { profileId: post.creatorId } }">
+                        <img :src="post.creator.picture" alt="" class="rounded-circle profile-picture">
+                    </router-link>
                     <div>
                         <h4>
                             {{ post.creator.name }}
