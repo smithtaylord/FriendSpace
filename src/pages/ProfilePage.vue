@@ -47,6 +47,8 @@ import { postsService } from '../services/PostsService.js';
 import { profilesService } from '../services/ProfilesService.js';
 import { AppState } from '../AppState.js';
 import Pop from '../utils/Pop.js';
+import { adsService } from '../services/AdsService.js';
+
 
 export default {
     setup() {
@@ -66,10 +68,17 @@ export default {
                 Pop.error(error, '[getting posts by creator id]')
             }
         }
-
+        async function getAds() {
+            try {
+                await adsService.getAds()
+            } catch (error) {
+                Pop.error(error, '[getting ads]')
+            }
+        }
         onMounted(() => {
             getProfileById();
             getPostsByCreatorId();
+            getAds()
 
         })
         return {

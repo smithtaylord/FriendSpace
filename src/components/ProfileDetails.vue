@@ -11,17 +11,18 @@
 
 
 <script>
-import { Profile } from '../models/Profile.js';
+// import { Profile } from '../models/Profile.js';
 
+import { computed } from 'vue';
+import { AppState } from '../AppState.js';
+
+// TODO PULL THIS IN FROM THE APPSTATE!
 export default {
-    props: {
-        profile: {
-            type: Profile,
-            required: true
-        }
-    },
+
     setup() {
-        return {}
+        return {
+            profile: computed(() => AppState.profile)
+        }
     }
 }
 </script>

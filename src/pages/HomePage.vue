@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6 offset-md-6">
-        <form @submit.prevent="searchPosts">
+        <form @submit.prevent="searchPostsAndProfiles">
           <div class="input-group mb-3">
             <input v-model="editable.query" type="text" class="form-control" placeholder="search...."
               aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -52,6 +52,7 @@ import PostCard from '../components/PostCard.vue';
 import { logger } from '../utils/Logger.js';
 import { adsService } from '../services/AdsService.js';
 import AdCard from '../components/AdCard.vue';
+import { profilesService } from '../services/ProfilesService.js';
 
 export default {
   setup() {
@@ -98,10 +99,11 @@ export default {
           Pop.error(error, '[change page]')
         }
       },
-      async searchPosts() {
+      async searchPostsAndProfiles() {
         try {
           let searchData = editable.value
           await postsService.searchPosts(searchData)
+          await profilesService.searchProfiles(searchData)
         } catch (error) {
           Pop.error(error, '[search posts]')
         }
