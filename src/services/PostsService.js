@@ -47,6 +47,15 @@ class PostsService {
         AppState.posts.unshift(new Post(res.data))
     }
 
+    async editPost(formData) {
+        const postId = formData.id
+        const res = await api.put('/api/posts/' + postId, { body: formData.body, imgUrl: formData.imgUrl })
+        logger.log('[edit post]', res.data)
+        let postIndex = AppState.posts.findIndex(p => p.id == postId)
+        AppState.posts.splice(postIndex, 1, new Post(res.data))
+        AppState.activePost = null
+    }
+
     async deletePost(postId) {
         const res = await api.delete('api/posts/' + postId)
         logger.log(res.data, '[deleted post]')

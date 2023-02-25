@@ -1,6 +1,6 @@
 <template>
     <div class="component">
-        <form @submit.prevent="createPost">
+        <form @submit.prevent="handleSubmit">
             <div class="form-floating">
                 <textarea v-model="editable.body" class="form-control" placeholder="Leave a comment here" id="body"
                     style="height: 100px"></textarea>
@@ -20,7 +20,7 @@
 
 
 <script>
-import { ref, watchEffect } from 'vue';
+import { ref, watchEffect, computed } from 'vue';
 import { AppState } from '../AppState.js';
 import { postsService } from '../services/PostsService.js';
 import { logger } from '../utils/Logger.js';
@@ -29,18 +29,26 @@ import Pop from '../utils/Pop.js';
 export default {
     setup() {
         const editable = ref({})
-
+        // ASK if there is a better way to write this?
         watchEffect(() => {
-            if (AppState?.activePost) {
+            if (AppState.activePost != null) {
                 editable.value = { ...AppState.activePost }
+            } else {
+                editable.value = {}
             }
         })
         return {
             editable,
-            async createPost() {
+            async handleSubmit() {
                 try {
+
+                    // How did we do the turnary function in class????
                     const formData = editable.value
-                    await postsService.createPost(formData)
+                    if (editable.value.id) {
+                        await postsService.editPost(formData)
+                    } else {
+                        await postsService.createPost(formData)
+                    }
                     editable.value = {}
                 } catch (error) {
                     Pop.error(error, '[create post]')
