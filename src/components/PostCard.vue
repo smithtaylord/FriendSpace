@@ -44,7 +44,7 @@
             <div class="col-12 mt-3">
                 <img v-if="post.imgUrl" :src="post.imgUrl" alt="" class="post-picture img-fluid">
             </div>
-            <div class="col-12 text-end mt-3">
+            <div v-if="account.id" class="col-12 text-end mt-3">
                 <i @click="toggleLikes(post)" type="button"
                     :class="`mdi fs-3 ${(post.likeIds.includes(account.id)) ? 'mdi-heart' : 'mdi-heart-outline'}`"></i>
                 <p v-if="post.likes.length > 0">{{ post.likes.length }}</p>
