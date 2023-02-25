@@ -41,7 +41,7 @@
                 {{ post.body }}
             </div>
             <div class="col-12 mt-3">
-                <img :src="post.imgUrl" alt="" class="post-picture img-fluid">
+                <img v-if="post.imgUrl" :src="post.imgUrl" alt="" class="post-picture img-fluid">
             </div>
             <div class="col-12 text-end mt-3">
                 <i class="mdi mdi-heart-outline"></i>
