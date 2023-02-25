@@ -2,17 +2,38 @@
     <div class="PostCard">
         <div class="row">
             <div class="col-12">
-                <div class="d-flex gap-5">
-                    <router-link :to="{ name: 'Profile', params: { profileId: post.creatorId } }">
-                        <img :src="post.creator.picture" alt="" class="rounded-circle profile-picture">
-                    </router-link>
-                    <div>
-                        <h4>
-                            {{ post.creator.name }}
-                        </h4>
-                        <p>
-                            {{ post.createdAt }}
-                        </p>
+                <div class="row">
+                    <div class="col-1">
+                        <router-link :to="{ name: 'Profile', params: { profileId: post.creatorId } }">
+                            <img :src="post.creator.picture" alt="" class="rounded-circle profile-picture">
+                        </router-link>
+                    </div>
+                    <div class="col-10">
+                        <div>
+                            <h4>
+                                {{ post.creator.name }}
+                            </h4>
+                            <p>
+                                {{ post.createdAt }}
+                            </p>
+                        </div>
+                    </div>
+                    <div v-if="post.creatorId == account.id" class="col-1 text-end">
+                        <div class="dropdown my-2">
+                            <div type="button" class="selectable" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="mdi mdi-dots-horizontal fs-1 "></i>
+                            </div>
+                            <div class="dropdown-menu text-center fs-1">
+                                <div class="list-group">
+                                    <i type="button" class="mdi mdi-lead-pencil my-2"></i>
+                                </div>
+                                <div class="list-group">
+                                    <i @click="deletePost(post)" type="button"
+                                        class="mdi mdi-trash-can-outline text-danger my-2"></i>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -32,7 +53,12 @@
 
 
 <script>
+import { computed } from 'vue';
+import { AppState } from '../AppState.js';
 import { Post } from '../models/Post.js';
+import { postsService } from '../services/PostsService.js';
+import { logger } from '../utils/Logger.js';
+import Pop from '../utils/Pop.js';
 
 export default {
     props: {
@@ -43,7 +69,19 @@ export default {
     },
 
     setup() {
-        return {}
+        return {
+            account: computed(() => AppState.account),
+            async deletePost(post) {
+                try {
+                    if (await Pop.confirm('Are you sure you want to delete your post?')) {
+                        await postsService.deletePost(post.id)
+                    }
+                } catch (error) {
+                    Pop.error(error, '[delete post]')
+                }
+            }
+
+        }
     }
 }
 </script>

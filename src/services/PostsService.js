@@ -44,6 +44,14 @@ class PostsService {
     async createPost(formData) {
         const res = await api.post('api/posts', formData)
         logger.log(res.data, '[creating post]')
+        AppState.posts.unshift(new Post(res.data))
+    }
+
+    async deletePost(postId) {
+        const res = await api.delete('api/posts/' + postId)
+        logger.log(res.data, '[deleted post]')
+        let postIndex = AppState.posts.findIndex(p => p.id == postId)
+        AppState.posts.splice(postIndex, 1)
     }
 
 

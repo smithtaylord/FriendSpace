@@ -35,7 +35,7 @@ export default {
                 try {
                     const formData = editable.value
                     await postsService.createPost(formData)
-
+                    editable.value = {}
                 } catch (error) {
                     Pop.error(error, '[create post]')
                 }
