@@ -14,6 +14,9 @@
     <div class="row">
       <!-- Posts Section -->
       <div class="col-9">
+        <div>
+          <PostForm />
+        </div>
         <div v-for="p in posts" class="border border-dark rounded my-3 p-4">
           <PostCard :post="p" />
         </div>
@@ -53,9 +56,11 @@ import { logger } from '../utils/Logger.js';
 import { adsService } from '../services/AdsService.js';
 import AdCard from '../components/AdCard.vue';
 import { profilesService } from '../services/ProfilesService.js';
+import { useRouter } from 'vue-router';
 
 export default {
   setup() {
+    const router = useRouter()
     const editable = ref({})
     async function getPosts() {
       try {
@@ -84,6 +89,7 @@ export default {
       ads: computed(() => AppState.ads),
       editable,
 
+
       async changePage(direction) {
 
         try {
@@ -104,6 +110,7 @@ export default {
           let searchData = editable.value
           await postsService.searchPosts(searchData)
           await profilesService.searchProfiles(searchData)
+          router.push({ name: 'Search', params: { searchTerm: searchData.query } })
         } catch (error) {
           Pop.error(error, '[search posts]')
         }

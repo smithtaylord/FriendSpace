@@ -6,7 +6,7 @@
         </div>
         <!-- Create Post Section -->
         <div class="row">
-            <div class="col-12">
+            <div v-if="account.id == profile.id" class="col-12">
                 <PostForm />
             </div>
         </div>
@@ -88,6 +88,7 @@ export default {
             older: computed(() => AppState.olderPage),
             newer: computed(() => AppState.newerPage),
             page: computed(() => AppState.postsPage),
+            account: computed(() => AppState.account),
 
             async changePage(direction) {
 
