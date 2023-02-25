@@ -10,7 +10,7 @@
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-md-8 m-auto">
+      <div class="col-md-8 m-auto ">
         <form @submit.prevent="editAccount">
 
           <div class="form-floating mb-3">

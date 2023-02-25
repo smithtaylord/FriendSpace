@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-12">
                         <h1>PROFILES</h1>
-                        <div v-for="p in profiles">
+                        <div v-for="p in profiles" class="rounded custom-border">
                             <ProfilesCard :profile="p" />
                         </div>
                     </div>
@@ -13,11 +13,11 @@
                 <div class="row">
                     <div class="col-12">
                         <h1>POSTS</h1>
-                        <div v-for="p in posts" class="border border-dark rounded my-3 p-4">
+                        <div v-for="p in posts" class="custom-border rounded my-3 p-4">
                             <PostCard :post="p" />
                         </div>
                         <div class="d-flex justify-content-around mb-3">
-                            <button @click="changePage('newer')" class="btn btn-secondary posts-button"
+                            <button @click="changePage('newer')" class="btn bg-secondary text-light posts-button"
                                 :disabled="newer == null">
                                 Newer
                             </button>
@@ -26,7 +26,7 @@
                                     {{ page }}
                                 </p>
                             </div>
-                            <button @click="changePage('older')" class="btn btn-secondary posts-button"
+                            <button @click="changePage('older')" class="btn bg-secondary text-light posts-button"
                                 :disabled="older == null">
                                 Older
                             </button>

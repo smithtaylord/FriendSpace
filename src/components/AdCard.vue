@@ -1,6 +1,6 @@
 <template>
-    <div class="AdCard">
-        <img class="img-fluid mt-5 p-3" :src="ad.tall" alt="" :title="ad.title">
+    <div class="AdCard ">
+        <img class="img-fluid mt-5 p-3 " :src="ad.tall" alt="" :title="ad.title">
     </div>
 </template>
 
