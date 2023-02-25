@@ -2,31 +2,42 @@
     <div v-if="profile" class="ProfilePage container-fluid">
         <!-- Profile Section -->
         <div class="row">
-            <ProfileDetails />
-        </div>
-        <!-- Create Post Section -->
-        <div class="row">
-            <div v-if="account.id == profile.id" class="col-12">
-                <PostForm />
-            </div>
-        </div>
-        <div class="row">
             <div class="col-9">
-                <div v-for="p in posts" class="border border-dark rounded my-3 p-4">
-                    <PostCard :post="p" />
-                </div>
-                <div class="d-flex justify-content-around mb-3">
-                    <button @click="changePage('newer')" class="btn btn-secondary posts-button" :disabled="newer == null">
-                        Newer
-                    </button>
-                    <div>
-                        <p>
-                            {{ page }}
-                        </p>
+                <div class="row">
+                    <div class="col-12">
+                        <ProfileDetails />
                     </div>
-                    <button @click="changePage('older')" class="btn btn-secondary posts-button" :disabled="older == null">
-                        Older
-                    </button>
+                </div>
+
+                <!-- Create Post Section -->
+                <div class="row">
+                    <div class="col-12">
+                        <div v-if="account.id == profile.id" class="col-12">
+                            <PostForm />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div v-for="p in posts" class="border border-dark rounded my-3 p-4">
+                            <PostCard :post="p" />
+                        </div>
+                        <div class="d-flex justify-content-around mb-3">
+                            <button @click="changePage('newer')" class="btn btn-secondary posts-button"
+                                :disabled="newer == null">
+                                Newer
+                            </button>
+                            <div>
+                                <p>
+                                    {{ page }}
+                                </p>
+                            </div>
+                            <button @click="changePage('older')" class="btn btn-secondary posts-button"
+                                :disabled="older == null">
+                                Older
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-3">

@@ -18,6 +18,10 @@
             <label for="floatingInput">Name</label>
           </div>
           <div class="form-floating mb-3">
+            <textarea v-model="editable.bio" type="text" class="form-control bio" id="bio" placeholder="bio"></textarea>
+            <label for="floatingInput">Bio</label>
+          </div>
+          <div class="form-floating mb-3">
             <input v-model="editable.picture" type="url" class="form-control" id="picture" placeholder="picture">
             <label for="floatingInput">Picture</label>
           </div>
@@ -86,6 +90,10 @@ export default {
 <style scoped>
 img {
   max-width: 100px;
+}
+
+.bio {
+  height: 15vh;
 }
 </style>
 

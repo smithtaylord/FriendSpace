@@ -1,6 +1,7 @@
 export class Account {
   constructor(data) {
     this.id = data.id
+    this.bio = data.bio
     this.email = data.email
     this.name = data.name
     this.picture = data.picture

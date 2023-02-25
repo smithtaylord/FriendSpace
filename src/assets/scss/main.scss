@@ -4,8 +4,18 @@
 @import "./_utilities.scss";
 @import "./loaders.scss";
 
+
+:root {
+  --blue: #3a416f;
+  --lite-blue: #5d83c0;
+  --teal: #10a3a2;
+  --lite-gray: #b0b3b1;
+  --black: #111311;
+}
+
 body {
   overscroll-behavior: none;
+  font-family: 'Quicksand', sans-serif;
 }
 
 #app {
@@ -40,4 +50,44 @@ select {
 form:invalid button[type="submit"] {
   filter: grayscale(1);
   pointer-events: none;
+}
+
+.bg-blue {
+  color: var(--blue)
+}
+
+.text-blue {
+  color: var(--blue)
+}
+
+.bg-lite-blue {
+  color: var(--lite-blue)
+}
+
+.text-lite-blue {
+  color: var(--lite-blue)
+}
+
+.bg-teal {
+  color: var(--teal)
+}
+
+.text-teal {
+  color: var(--teal)
+}
+
+.bg-lite-gray {
+  color: var(--lite-gray)
+}
+
+.text-lite-gray {
+  color: var(--lite-gray)
+}
+
+.bg-black {
+  color: var(--black)
+}
+
+.text-black {
+  color: var(--black)
 }
