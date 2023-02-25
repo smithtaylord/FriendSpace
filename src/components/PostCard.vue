@@ -45,7 +45,8 @@
                 <img v-if="post.imgUrl" :src="post.imgUrl" alt="" class="post-picture img-fluid">
             </div>
             <div class="col-12 text-end mt-3">
-                <i class="mdi mdi-heart-outline"></i>
+                <i @click="toggleLikes(post)" type="button" class="mdi mdi-heart-outline fs-3"></i>
+                <small v-if="post.likes.length > 0">{{ post.likes.length }}</small>
             </div>
         </div>
 
@@ -91,6 +92,15 @@ export default {
                     postsService.setPostActive(post)
                 } catch (error) {
                     Pop.error(error, '[setting post active]')
+                }
+            },
+
+            async toggleLikes(post) {
+                try {
+                    const postId = post.id
+                    await postsService.toggleLikes(postId)
+                } catch (error) {
+                    Pop.error(error, '[toggle likes]')
                 }
             }
 

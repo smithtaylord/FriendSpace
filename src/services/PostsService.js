@@ -2,7 +2,7 @@ import { AppState } from "../AppState.js"
 import { Post } from "../models/Post.js"
 import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
-
+// TODO HOW DO I MAKE SOME OF THESE FUNCTIONS MORE REUSABLE
 class PostsService {
     async getPosts() {
         const res = await api.get('api/posts')
@@ -46,6 +46,12 @@ class PostsService {
         logger.log(res.data, '[creating post]')
         AppState.posts.unshift(new Post(res.data))
     }
+    async toggleLikes(postId) {
+        const res = await api.post(`api/posts/${postId}/like`)
+        logger.log('[toggle like]', res.data)
+        let postIndex = AppState.posts.findIndex(p => p.id == postId)
+        AppState.posts.splice(postIndex, 1, new Post(res.data))
+    }
 
     async editPost(formData) {
         const postId = formData.id
@@ -55,6 +61,7 @@ class PostsService {
         AppState.posts.splice(postIndex, 1, new Post(res.data))
         AppState.activePost = null
     }
+
 
     async deletePost(postId) {
         const res = await api.delete('api/posts/' + postId)
@@ -66,6 +73,8 @@ class PostsService {
     setPostActive(post) {
         AppState.activePost = post
     }
+
+
 
 
 }

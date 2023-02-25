@@ -48,6 +48,7 @@ import { profilesService } from '../services/ProfilesService.js';
 import { AppState } from '../AppState.js';
 import Pop from '../utils/Pop.js';
 import { adsService } from '../services/AdsService.js';
+import { logger } from '../utils/Logger.js';
 
 
 export default {
