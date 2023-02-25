@@ -1,7 +1,7 @@
 <template>
-    <div class="PostCard">
+    <div class="PostCard text-dark p-2">
         <div class="row">
-            <div class="col-12">
+            <div class="col-10">
                 <div class="row">
                     <div class="col-1">
                         <router-link :to="{ name: 'Profile', params: { profileId: post.creatorId } }">
@@ -13,7 +13,7 @@
                             <h4>
                                 {{ post.creator.name }}
                             </h4>
-                            <p>
+                            <p class="text-secondary">
                                 {{ post.createdAt }}
                             </p>
                         </div>
@@ -21,7 +21,7 @@
                     <div v-if="post.creatorId == account.id" class="col-1 text-end">
                         <div class="dropdown my-2">
                             <div type="button" class="selectable" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="mdi mdi-dots-horizontal fs-1 "></i>
+                                <i class="text-primary mdi mdi-dots-horizontal fs-1 "></i>
                             </div>
                             <div class="dropdown-menu text-center fs-1">
                                 <div class="list-group">
@@ -41,12 +41,12 @@
             <div class="col-12 mt-3">
                 {{ post.body }}
             </div>
-            <div class="col-12 mt-3">
+            <div class="col-8 m-auto mt-3">
                 <img v-if="post.imgUrl" :src="post.imgUrl" alt="" class="post-picture img-fluid">
             </div>
             <div v-if="account.id" class="col-12 text-end mt-3">
                 <i @click="toggleLikes(post)" type="button"
-                    :class="`mdi fs-3 ${(post.likeIds.includes(account.id)) ? 'mdi-heart' : 'mdi-heart-outline'}`"></i>
+                    :class="`text-primary mdi fs-3 ${(post.likeIds.includes(account.id)) ? 'mdi-heart' : 'mdi-heart-outline'}`"></i>
                 <p v-if="post.likes.length > 0">{{ post.likes.length }}</p>
             </div>
         </div>

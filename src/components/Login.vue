@@ -1,37 +1,46 @@
 <template>
-  <span class="navbar-text">
-    <button class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0" @click="login"
-      v-if="!user.isAuthenticated">
-      Login
-    </button>
-    <div v-else>
-      <div class="dropdown dropstart my-2 my-lg-0">
-        <div type="button" class="bg-dark border-0 selectable no-select" data-bs-toggle="dropdown" aria-expanded="false">
-          <div v-if="account.picture || user.picture">
-            <img :src="account.picture || user.picture" alt="account photo" height="40" class="rounded" />
+  <button class="btn selectable text-primarytext-uppercase my-2 my-lg-0" @click="login" v-if="!user.isAuthenticated">
+    Login
+  </button>
+
+
+  <div v-else class="container-fluid">
+    <div class="row">
+      <div class="col-12 text-dark">
+        <div v-if="account.picture || user.picture">
+          <img :src="account.picture || user.picture" alt="account photo"
+            class="rounded-circle profile-picture img-fluid" />
+          <div class="d-flex gap-3">
+            <h4>{{ account.name }}</h4>
+            <i v-if="account.graduated" class="mdi mdi-school fs-4"></i>
           </div>
         </div>
-        <div class="dropdown-menu dropdown-menu-lg-left p-0" aria-labelledby="authDropdown">
-          <div class="list-group">
-            <router-link :to="{ name: 'Account' }">
-              <div class="list-group-item dropdown-item list-group-item-action">
-                Manage Account
-              </div>
-            </router-link>
-            <router-link v-if="account.id" :to="{ name: 'Profile', params: { profileId: account.id } }">
-              <div class="list-group-item dropdown-item list-group-item-action">
-                Profile
-              </div>
-            </router-link>
-            <div class="list-group-item dropdown-item list-group-item-action text-danger selectable" @click="logout">
-              <i class="mdi mdi-logout"></i>
-              logout
+        <div class="d-flex align-items-baseline gap-1">
+          <h5> {{ account.class }}</h5>
+          <a v-if="account.github" :href="account.github" target="_blank"><i
+              class="mdi mdi-github fs-5 text-secondary"></i></a>
+          <a v-if="account.linkedin" :href="account.linkedin" target="_blank"><i
+              class="mdi mdi-linkedin fs-5 text-secondary"></i></a>
+        </div>
+        <div class="list-group">
+          <router-link :to="{ name: 'Account' }">
+            <div class="list-group-item dropdown-item list-group-item-action">
+              Manage Account
             </div>
+          </router-link>
+          <router-link v-if="account.id" :to="{ name: 'Profile', params: { profileId: account.id } }">
+            <div class="list-group-item dropdown-item list-group-item-action">
+              Profile
+            </div>
+          </router-link>
+          <div class="list-group-item dropdown-item list-group-item-action text-danger selectable" @click="logout">
+            <i class="mdi mdi-logout"></i>
+            logout
           </div>
         </div>
       </div>
     </div>
-  </span>
+  </div>
 </template>
 
 <script>
@@ -54,4 +63,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.profile-picture {
+  height: 10vh;
+  width: 10vh;
+}
+</style>

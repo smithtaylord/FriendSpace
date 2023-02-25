@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center text-teal">
+      <div class="d-flex flex-column align-items-center text-primary">
         <h3><i class="mdi mdi-crowd"></i>FriendSpace</h3>
       </div>
     </router-link>
@@ -12,16 +12,49 @@
     <div class="collapse navbar-collapse" id="navbarText">
 
       <!-- LOGIN COMPONENT HERE -->
-      <Login />
+      <!-- <Login /> -->
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <form @submit.prevent="searchPostsAndProfiles">
+          <div class="input-group mb-3">
+            <input v-model="editable.query" type="text" class="form-control" placeholder="search...."
+              aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn bg-primary text-dark" type="submit" id="button-addon2"><i
+                class="mdi mdi-magnify"></i></button>
+          </div>
+        </form>
+      </div>
     </div>
   </nav>
 </template>
 
 <script>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { postsService } from '../services/PostsService.js'
+import { profilesService } from '../services/ProfilesService.js'
 import Login from './Login.vue'
 export default {
   setup() {
-    return {}
+    const router = useRouter()
+    const editable = ref({
+      query: ''
+    })
+    return {
+      editable,
+
+      async searchPostsAndProfiles() {
+        try {
+          let searchData = editable.value
+          await postsService.searchPosts(searchData)
+          await profilesService.searchProfiles(searchData)
+          router.push({ name: 'Search', params: { searchTerm: searchData.query } })
+        } catch (error) {
+          Pop.error(error, '[search posts]')
+        }
+      }
+    }
   },
   components: { Login }
 }

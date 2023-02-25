@@ -1,5 +1,5 @@
 <template>
-    <div v-if="profile" class="ProfilePage container-fluid">
+    <div v-if="profile" class="ProfilePage container-fluid text-dark">
         <!-- Profile Section -->
         <div class="row">
             <div class="col-9">
@@ -19,11 +19,11 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <div v-for="p in posts" class="border border-dark rounded my-3 p-4">
+                        <div v-for="p in posts" class=" rounded my-3 p-4 custom-border">
                             <PostCard :post="p" />
                         </div>
                         <div class="d-flex justify-content-around mb-3">
-                            <button @click="changePage('newer')" class="btn btn-secondary posts-button"
+                            <button @click="changePage('newer')" class="btn bg-secondary text-light posts-button"
                                 :disabled="newer == null">
                                 Newer
                             </button>
@@ -32,7 +32,7 @@
                                     {{ page }}
                                 </p>
                             </div>
-                            <button @click="changePage('older')" class="btn btn-secondary posts-button"
+                            <button @click="changePage('older')" class="btn bg-secondary text-light posts-button"
                                 :disabled="older == null">
                                 Older
                             </button>

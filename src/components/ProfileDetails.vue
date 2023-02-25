@@ -1,5 +1,5 @@
 <template>
-    <div class="component">
+    <div class="component text-dark">
         <div class="col-12">
             <div class="">
                 <div>
@@ -7,14 +7,14 @@
                 </div>
                 <div class="d-flex justify-content-between align-items-baseline">
                     <div>
-                        <img class="rounded-circle profile-picture" :src="profile.picture" alt="">
+                        <img class="text-secondary rounded-circle profile-picture" :src="profile.picture" alt="">
                         <i v-if="profile.graduated" class="mdi mdi-school fs-1"></i>
                     </div>
                     <div>
                         <a v-if="profile.github" :href="profile.github" target="_blank"><i
-                                class="mdi mdi-github fs-1 px-3"></i></a>
+                                class="text-secondary mdi mdi-github fs-1 px-3"></i></a>
                         <a v-if="profile.linkedin" :href="profile.linkedin" target="_blank"><i
-                                class="mdi mdi-linkedin fs-1 px-3"></i></a>
+                                class="text-secondary mdi mdi-linkedin fs-1 px-3"></i></a>
                     </div>
                 </div>
                 <div>

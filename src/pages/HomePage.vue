@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-md-6 offset-md-6">
         <form @submit.prevent="searchPostsAndProfiles">
           <div class="input-group mb-3">
@@ -10,18 +10,18 @@
           </div>
         </form>
       </div>
-    </div>
+    </div> -->
     <div class="row">
       <!-- Posts Section -->
-      <div class="col-9">
+      <div class="col-9 px-5 py-2 my-2">
         <div>
           <PostForm />
         </div>
-        <div v-for="p in posts" class="border border-dark rounded my-3 p-4">
+        <div v-for="p in posts" class="custom-border rounded my-3 p-4">
           <PostCard :post="p" />
         </div>
         <div class="d-flex justify-content-around mb-3">
-          <button @click="changePage('newer')" class="btn btn-secondary posts-button" :disabled="newer == null">
+          <button @click="changePage('newer')" class="btn bg-secondary text-light posts-button" :disabled="newer == null">
             Newer
           </button>
           <div>
@@ -29,7 +29,7 @@
               {{ page }}
             </p>
           </div>
-          <button @click="changePage('older')" class="btn btn-secondary posts-button" :disabled="older == null">
+          <button @click="changePage('older')" class="btn bg-secondary text-light posts-button" :disabled="older == null">
             Older
           </button>
         </div>
@@ -60,8 +60,8 @@ import { useRouter } from 'vue-router';
 
 export default {
   setup() {
-    const router = useRouter()
-    const editable = ref({})
+    // const router = useRouter()
+    // const editable = ref({})
     async function getPosts() {
       try {
         await postsService.getPosts();
@@ -87,7 +87,7 @@ export default {
       older: computed(() => AppState.olderPage),
       newer: computed(() => AppState.newerPage),
       ads: computed(() => AppState.ads),
-      editable,
+      // editable,
 
 
       async changePage(direction) {
@@ -105,16 +105,16 @@ export default {
           Pop.error(error, '[change page]')
         }
       },
-      async searchPostsAndProfiles() {
-        try {
-          let searchData = editable.value
-          await postsService.searchPosts(searchData)
-          await profilesService.searchProfiles(searchData)
-          router.push({ name: 'Search', params: { searchTerm: searchData.query } })
-        } catch (error) {
-          Pop.error(error, '[search posts]')
-        }
-      }
+      // async searchPostsAndProfiles() {
+      //   try {
+      //     let searchData = editable.value
+      //     await postsService.searchPosts(searchData)
+      //     await profilesService.searchProfiles(searchData)
+      //     router.push({ name: 'Search', params: { searchTerm: searchData.query } })
+      //   } catch (error) {
+      //     Pop.error(error, '[search posts]')
+      //   }
+      // }
     };
   },
   components: { PostCard, AdCard }

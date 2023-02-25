@@ -1,11 +1,18 @@
 <template>
   <div>
-    <header>
+    <header class="sticky-top">
       <Navbar />
     </header>
   </div>
-  <main>
-    <router-view />
+  <main class="container-fluid">
+    <div class="row">
+      <div class="col-2">
+        <Login />
+      </div>
+      <div class="col-10">
+        <router-view />
+      </div>
+    </div>
   </main>
 </template>
 

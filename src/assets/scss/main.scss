@@ -52,42 +52,7 @@ form:invalid button[type="submit"] {
   pointer-events: none;
 }
 
-.bg-blue {
-  color: var(--blue)
-}
-
-.text-blue {
-  color: var(--blue)
-}
-
-.bg-lite-blue {
-  color: var(--lite-blue)
-}
-
-.text-lite-blue {
-  color: var(--lite-blue)
-}
-
-.bg-teal {
-  color: var(--teal)
-}
-
-.text-teal {
-  color: var(--teal)
-}
-
-.bg-lite-gray {
-  color: var(--lite-gray)
-}
-
-.text-lite-gray {
-  color: var(--lite-gray)
-}
-
-.bg-black {
-  color: var(--black)
-}
-
-.text-black {
-  color: var(--black)
+.custom-border {
+  // border: 1px solid #243763;
+  box-shadow: 1px 1px 5px #967d63;
 }
