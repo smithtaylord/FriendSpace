@@ -20,7 +20,7 @@
 
 
 <script>
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 import { AppState } from '../AppState.js';
 import { postsService } from '../services/PostsService.js';
 import { logger } from '../utils/Logger.js';
@@ -29,6 +29,12 @@ import Pop from '../utils/Pop.js';
 export default {
     setup() {
         const editable = ref({})
+
+        watchEffect(() => {
+            if (AppState?.activePost) {
+                editable.value = { ...AppState.activePost }
+            }
+        })
         return {
             editable,
             async createPost() {

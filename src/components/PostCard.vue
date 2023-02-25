@@ -25,7 +25,8 @@
                             </div>
                             <div class="dropdown-menu text-center fs-1">
                                 <div class="list-group">
-                                    <i type="button" class="mdi mdi-lead-pencil my-2"></i>
+                                    <i @click="setPostActive(post)" type="button" class="mdi mdi-lead-pencil my-2"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                                 </div>
                                 <div class="list-group">
                                     <i @click="deletePost(post)" type="button"
@@ -49,6 +50,10 @@
         </div>
 
     </div>
+
+    <Modal>
+
+    </Modal>
 </template>
 
 
@@ -78,6 +83,14 @@ export default {
                     }
                 } catch (error) {
                     Pop.error(error, '[delete post]')
+                }
+            },
+
+            setPostActive(post) {
+                try {
+                    postsService.setPostActive(post)
+                } catch (error) {
+                    Pop.error(error, '[setting post active]')
                 }
             }
 

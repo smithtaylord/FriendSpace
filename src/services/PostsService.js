@@ -54,6 +54,10 @@ class PostsService {
         AppState.posts.splice(postIndex, 1)
     }
 
+    setPostActive(post) {
+        AppState.activePost = post
+    }
+
 
 }
 
