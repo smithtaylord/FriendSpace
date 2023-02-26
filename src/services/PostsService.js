@@ -74,6 +74,10 @@ class PostsService {
         AppState.activePost = post
     }
 
+    clearPosts() {
+        AppState.posts = []
+    }
+
 
 
 

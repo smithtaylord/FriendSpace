@@ -46,11 +46,14 @@
         </div>
 
     </div>
+    <div v-else>
+        <Load />
+    </div>
 </template>
 
 
 <script>
-import { onMounted, computed } from 'vue';
+import { onMounted, computed, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { postsService } from '../services/PostsService.js';
 import { profilesService } from '../services/ProfilesService.js';
@@ -96,6 +99,12 @@ export default {
             scrollToTop()
 
         })
+
+        onUnmounted(() => {
+            postsService.clearPosts();
+            profilesService.clearProfile();
+            profilesService.clearProfiles()
+        })
         return {
             posts: computed(() => AppState.posts),
             profile: computed(() => AppState.profile),
@@ -111,11 +120,11 @@ export default {
                     if (direction == 'older') {
                         logger.log('older')
                         await postsService.changePage(AppState.olderPage)
-                        this.scrollToTop()
+                        scrollToTop()
                     } if (direction == 'newer') {
                         logger.log('newer')
                         await postsService.changePage(AppState.newerPage)
-                        this.scrollToTop()
+                        scrollToTop()
                     }
 
                 } catch (error) {

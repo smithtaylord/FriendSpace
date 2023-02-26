@@ -45,7 +45,7 @@
 
 
 <script>
-import { onMounted, computed } from 'vue';
+import { onMounted, computed, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState.js';
 import { adsService } from '../services/AdsService.js';
@@ -84,6 +84,12 @@ export default {
             scrollToTop()
             searchPostsAndProfiles()
         });
+
+        onUnmounted(() => {
+            postsService.clearPosts();
+            profilesService.clearProfile();
+            profilesService.clearProfiles()
+        })
         return {
             searchTerm,
             posts: computed(() => AppState.posts),
@@ -100,11 +106,11 @@ export default {
                     if (direction == 'older') {
                         logger.log('older')
                         await postsService.changePage(AppState.olderPage)
-                        this.scrollToTop()
+                        scrollToTop()
                     } if (direction == 'newer') {
                         logger.log('newer')
                         await postsService.changePage(AppState.newerPage)
-                        this.scrollToTop()
+                        scrollToTop()
                     }
 
                 } catch (error) {

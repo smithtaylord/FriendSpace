@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div v-if="posts.length" class="container-fluid">
     <!-- <div class="row">
       <div class="col-md-6 offset-md-6">
         <form @submit.prevent="searchPostsAndProfiles">
@@ -47,10 +47,13 @@
     </div>
 
   </div>
+  <div v-else>
+    <Load />
+  </div>
 </template>
 
 <script>
-import { onMounted, computed, ref } from 'vue';
+import { onMounted, computed, ref, onUnmounted } from 'vue';
 import { postsService } from '../services/PostsService.js';
 import { AppState } from '../AppState.js';
 import Pop from '../utils/Pop.js';
@@ -89,6 +92,12 @@ export default {
       getAds()
       scrollToTop()
     });
+
+    onUnmounted(() => {
+      postsService.clearPosts();
+      profilesService.clearProfile();
+      profilesService.clearProfiles()
+    })
     return {
       posts: computed(() => AppState.posts),
       page: computed(() => AppState.postsPage),

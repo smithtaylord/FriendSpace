@@ -15,6 +15,14 @@ class ProfilesService {
         logger.log(res.data, '[getting profiles by query')
         AppState.profiles = res.data.map(p => new Profile(p))
     }
+
+    clearProfile() {
+        AppState.profile = null
+    }
+
+    clearProfiles() {
+        AppState.profiles = []
+    }
 }
 
 export const profilesService = new ProfilesService()
