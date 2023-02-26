@@ -1,11 +1,11 @@
 <template>
     <div class="component text-dark">
         <div class="col-12">
-            <div class="">
+            <div class="custom-border rounded mt-4">
                 <div>
-                    <img class="img-fluid cover-photo" :src="profile.coverImg" alt="">
+                    <img class="img-fluid cover-photo rounded" :src="profile.coverImg" alt="">
                 </div>
-                <div class="d-flex justify-content-between align-items-baseline">
+                <div class="d-flex justify-content-between align-items-start px-3">
                     <div>
                         <img class="text-secondary rounded-circle profile-picture" :src="profile.picture" alt="">
                         <i v-if="profile.graduated" class="mdi mdi-school fs-1"></i>
@@ -17,14 +17,14 @@
                                 class="text-secondary mdi mdi-linkedin fs-1 px-3"></i></a>
                     </div>
                 </div>
-                <div>
-                    <h5>{{ profile.class }}</h5>
-                    <h2>{{ profile.name }}</h2>
-                    <h3 v-if="account.id == profile.id"><i @click="goToAccountPage"
-                            class="mdi mdi-lead-pencil selectable"></i>
+                <div class="move-up px-4">
+                    <h5 class="ps-2 pb-2">{{ profile.class }}</h5>
+                    <h2 class="ps-2">{{ profile.name }}</h2>
+                    <p class="ps-2 move-down-a-little">{{ profile.bio }}</p>
+                    <h6 class="text-end move-down" v-if="account.id == profile.id"><i @click="goToAccountPage"
+                            class="mdi mdi-lead-pencil selectable text-secondary fs-3"></i>
                         Manage
-                        Account</h3>
-                    <p>{{ profile.bio }}</p>
+                        Account</h6>
                 </div>
 
             </div>
@@ -63,6 +63,18 @@ export default {
     width: 20vh;
     transform: translateY(-10vh);
 
+}
+
+.move-up {
+    transform: translateY(-6vh)
+}
+
+.move-down {
+    transform: translateY(3vh)
+}
+
+.move-down-a-little {
+    transform: translateY(1vh)
 }
 
 .cover-photo {

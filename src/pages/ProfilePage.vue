@@ -11,7 +11,7 @@
         <!-- Create Post Section -->
         <div class="row">
             <div class="col-12">
-                <div v-if="account.id == profile.id" class="col-12">
+                <div v-if="account.id == profile.id" class="col-12 my-3 custom-border rounded p-3 pt-4">
                     <PostForm />
                 </div>
             </div>
