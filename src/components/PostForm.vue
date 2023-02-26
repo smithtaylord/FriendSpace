@@ -10,7 +10,7 @@
                 <div class="mb-3 custom-border2 form-floating">
                     <input v-model="editable.imgUrl" type="imgUrl" class="form-control" id="imgUrl"
                         aria-describedby="emailHelp">
-                    <label for="imgUrl" class="form-label">Picture</label>
+                    <label for="imgUrl" class="form-label" placeholder="picture">Picture</label>
                 </div>
                 <div class="text-end ">
                     <!-- TODO Is this the best way to do thi? I noticed that if you opened the modal to edit all your info would populate, but if you did not actually edit your information would still show up in the form at the top of the page? -->
