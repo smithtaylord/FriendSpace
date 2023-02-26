@@ -1,14 +1,10 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
+  <nav class="d-flex justify-content-between align-items-center bg-primary px-4">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center text-success">
-        <h3><i class="mdi mdi-crowd"></i>FriendSpace</h3>
+        <h3><i class="mdi mdi-crowd"></i>FriendSpace </h3>
       </div>
     </router-link>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
     <div class="collapse navbar-collapse" id="navbarText">
 
       <!-- LOGIN COMPONENT HERE -->
@@ -16,14 +12,16 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <form @submit.prevent="searchPostsAndProfiles">
-          <div class="input-group mb-3">
-            <input v-model="editable.query" type="text" class="form-control" placeholder="search...."
-              aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn bg-info text-success" type="submit" id="button-addon2"><i
-                class="mdi mdi-magnify"></i></button>
-          </div>
-        </form>
+        <div class="mt-2 add-width">
+          <form @submit.prevent="searchPostsAndProfiles">
+            <div class="input-group mb-3">
+              <input v-model="editable.query" type="text" class="form-control" placeholder="search posts and profiles..."
+                aria-label="Recipient's username" aria-describedby="button-addon2">
+              <button class="btn bg-info text-success" type="submit" id="button-addon2"><i
+                  class="mdi mdi-magnify"></i></button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </nav>
@@ -79,5 +77,9 @@ a:hover {
   nav {
     height: 64px;
   }
+}
+
+.add-width {
+  width: 30vw;
 }
 </style>

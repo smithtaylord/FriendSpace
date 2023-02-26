@@ -1,19 +1,19 @@
 <template>
     <div class="component">
-        <div>
+        <div class="p-2">
             <form @submit.prevent="handleSubmit" class="">
-                <div class="form-floating mb-3">
+                <div class="form-floating custom-border2 mb-3">
                     <textarea v-model="editable.body" class="form-control" placeholder="Leave a comment here" id="body"
                         style="height: 100px"></textarea>
                     <label for="body">Share something!</label>
                 </div>
-                <div class="mb-3 form-floating">
+                <div class="mb-3 custom-border2 form-floating">
                     <input v-model="editable.imgUrl" type="imgUrl" class="form-control" id="imgUrl"
                         aria-describedby="emailHelp">
                     <label for="imgUrl" class="form-label">Picture</label>
                 </div>
-                <div class="text-end">
-                    <button type="submit" class="btn bg-secondary text-light" title="create post"><i
+                <div class="text-end ">
+                    <button type="submit" class="btn bg-secondary text-light custom-border2" title="create post"><i
                             class="mdi mdi-send"></i></button>
                 </div>
             </form>
