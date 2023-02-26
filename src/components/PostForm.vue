@@ -1,20 +1,23 @@
 <template>
     <div class="component">
-        <form @submit.prevent="handleSubmit" class="bg-light">
-            <div class="form-floating">
-                <textarea v-model="editable.body" class="form-control" placeholder="Leave a comment here" id="body"
-                    style="height: 100px"></textarea>
-                <label for="body">Body</label>
-            </div>
-            <div class="mb-3 form-floating">
-                <input v-model="editable.imgUrl" type="imgUrl" class="form-control" id="imgUrl"
-                    aria-describedby="emailHelp">
-                <label for="imgUrl" class="form-label">Picture</label>
-            </div>
-
-            <button type="submit" class="btn bg-secondary text-light">Submit</button>
-        </form>
-
+        <div>
+            <form @submit.prevent="handleSubmit" class="">
+                <div class="form-floating mb-3">
+                    <textarea v-model="editable.body" class="form-control" placeholder="Leave a comment here" id="body"
+                        style="height: 100px"></textarea>
+                    <label for="body">Share something!</label>
+                </div>
+                <div class="mb-3 form-floating">
+                    <input v-model="editable.imgUrl" type="imgUrl" class="form-control" id="imgUrl"
+                        aria-describedby="emailHelp">
+                    <label for="imgUrl" class="form-label">Picture</label>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn bg-secondary text-light" title="create post"><i
+                            class="mdi mdi-send"></i></button>
+                </div>
+            </form>
+        </div>
     </div>
 </template>
 

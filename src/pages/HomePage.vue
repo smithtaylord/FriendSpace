@@ -13,14 +13,17 @@
     </div> -->
     <div class="row">
       <!-- Posts Section -->
-      <div class="col-12 px-5 py-2 my-2">
-        <div>
+      <div class="col-12 px-5 py-2 my-2 ">
+        <div class=" col-12 my-3 custom-border rounded p-3 pt-4">
           <PostForm />
         </div>
-        <div v-for="p in posts" class="col-12 custom-border rounded mx-5 my-3 pt-4">
+        <div class="col-12 my-3 pt-4 text-end">
+          <i>page {{ page }}</i>
+        </div>
+        <div v-for="p in posts" class="col-12 custom-border rounded my-3 pt-4">
           <PostCard :post="p" />
         </div>
-        <div class="d-flex justify-content-around mb-3">
+        <div class=" col-12 d-flex justify-content-around my-3 pt-4">
           <button @click="changePage('newer')" class="btn bg-primary text-success posts-button" :disabled="newer == null">
             Newer
           </button>
@@ -77,9 +80,14 @@ export default {
         Pop.error(error, '[getting ads]')
       }
     }
+
+    function scrollToTop() {
+      window.scrollTo(0, 0)
+    }
     onMounted(() => {
       getPosts();
       getAds()
+      scrollToTop()
     });
     return {
       posts: computed(() => AppState.posts),
@@ -96,9 +104,11 @@ export default {
           if (direction == 'older') {
             logger.log('older')
             await postsService.changePage(AppState.olderPage)
+            scrollToTop()
           } if (direction == 'newer') {
             logger.log('newer')
             await postsService.changePage(AppState.newerPage)
+            scrollToTop()
           }
 
         } catch (error) {

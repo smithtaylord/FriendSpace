@@ -19,7 +19,7 @@
                         </div>
 
                         <div v-if="post.creatorId == account.id">
-                            <div class="dropdown my-2">
+                            <div class="dropdown my-2 pe-3">
                                 <div type="button" class="selectable" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="text-primary mdi mdi-dots-horizontal fs-1 "></i>
                                 </div>

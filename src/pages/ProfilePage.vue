@@ -18,10 +18,10 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <div v-for="p in posts" class="custom-border rounded mx-5 my-3 p-4">
+                <div v-for="p in posts" class="custom-border rounded my-3 p-4">
                     <PostCard :post="p" />
                 </div>
-                <div class="d-flex justify-content-around mb-3">
+                <div class=" col-12 d-flex justify-content-around my-3 pt-4">
                     <button @click="changePage('newer')" class="btn bg-secondary text-light posts-button"
                         :disabled="newer == null">
                         Newer
@@ -85,10 +85,15 @@ export default {
                 Pop.error(error, '[getting ads]')
             }
         }
+
+        function scrollToTop() {
+            window.scrollTo(0, 0)
+        }
         onMounted(() => {
             getProfileById();
             getPostsByCreatorId();
             getAds()
+            scrollToTop()
 
         })
         return {
@@ -106,9 +111,11 @@ export default {
                     if (direction == 'older') {
                         logger.log('older')
                         await postsService.changePage(AppState.olderPage)
+                        this.scrollToTop()
                     } if (direction == 'newer') {
                         logger.log('newer')
                         await postsService.changePage(AppState.newerPage)
+                        this.scrollToTop()
                     }
 
                 } catch (error) {

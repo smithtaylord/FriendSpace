@@ -12,10 +12,10 @@
         <div class="row">
             <div class="col-12">
                 <h1>POSTS</h1>
-                <div v-for="p in posts" class="custom-border rounded mx-5 my-3 p-4">
+                <div v-for="p in posts" class="custom-border rounded my-3 p-4">
                     <PostCard :post="p" />
                 </div>
-                <div class="d-flex justify-content-around mb-3">
+                <div class=" col-12 d-flex justify-content-around my-3 pt-4">
                     <button @click="changePage('newer')" class="btn bg-secondary text-light posts-button"
                         :disabled="newer == null">
                         Newer
@@ -61,10 +61,14 @@ export default {
                 Pop.error(error, '[getting ads]')
             }
         }
+        function scrollToTop() {
+            window.scrollTo(0, 0)
+        }
 
         onMounted(() => {
             getAds()
-        })
+            scrollToTop()
+        });
         return {
             searchTerm,
             posts: computed(() => AppState.posts),
@@ -73,6 +77,24 @@ export default {
             older: computed(() => AppState.olderPage),
             newer: computed(() => AppState.newerPage),
             page: computed(() => AppState.postsPage),
+
+            async changePage(direction) {
+
+                try {
+                    if (direction == 'older') {
+                        logger.log('older')
+                        await postsService.changePage(AppState.olderPage)
+                        this.scrollToTop()
+                    } if (direction == 'newer') {
+                        logger.log('newer')
+                        await postsService.changePage(AppState.newerPage)
+                        this.scrollToTop()
+                    }
+
+                } catch (error) {
+                    Pop.error(error, '[change page]')
+                }
+            }
         }
     }
 }
