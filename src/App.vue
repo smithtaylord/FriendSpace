@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <header class="sticky-top">
+  <div class="sticky-top">
+    <header>
       <Navbar />
     </header>
   </div>
