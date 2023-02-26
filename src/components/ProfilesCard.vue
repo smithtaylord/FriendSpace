@@ -1,8 +1,10 @@
 <template>
     <div class="component">
-        <div class="d-flex">
-            <img class="profile-picture rounded-circle" :src="profile.picture" alt="">
-            <div>
+        <div class="d-flex align-items-center p-3 mb-3">
+            <router-link :to="{ name: 'Profile', params: { profileId: profile.id } }">
+                <img class="profile-picture rounded-circle ms-2" :src="profile.picture" alt="">
+            </router-link>
+            <div class="ms-4">
                 <h6>{{ profile.class }}</h6>
                 <h3>{{ profile.name }}</h3>
             </div>

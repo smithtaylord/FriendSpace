@@ -48,6 +48,7 @@ export default {
           await postsService.searchPosts(searchData)
           await profilesService.searchProfiles(searchData)
           router.push({ name: 'Search', params: { searchTerm: searchData.query } })
+          editable.value = {}
         } catch (error) {
           Pop.error(error, '[search posts]')
         }
