@@ -4,12 +4,12 @@
             <form @submit.prevent="handleSubmit" class="">
                 <div class="form-floating custom-border2 mb-3">
                     <textarea v-model="editable.body" class="form-control" placeholder="Leave a comment here" id="body"
-                        style="height: 100px"></textarea>
+                        style="height: 100px" max-length="1000" required></textarea>
                     <label for="body">Share something!</label>
                 </div>
                 <div class="mb-3 custom-border2 form-floating">
                     <input v-model="editable.imgUrl" type="url" class="form-control" id="imgUrl"
-                        aria-describedby="image-url">
+                        aria-describedby="image-url" maxlength="5000">
                     <label for="imgUrl" class="form-label" placeholder="picture">Picture</label>
                 </div>
                 <div class="text-end ">
