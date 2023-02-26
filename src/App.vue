@@ -6,13 +6,13 @@
   </div>
   <main class="container-fluid">
     <div class="row">
-      <div class="col-3">
+      <div class="col-md-3 d-none d-md-block ">
         <Login />
       </div>
-      <div class="col-6">
+      <div class="col-md-6">
         <router-view />
       </div>
-      <div class="col-3">
+      <div class="col-md-3 d-none d-md-block">
         <AdCard />
       </div>
     </div>

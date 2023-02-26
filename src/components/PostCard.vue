@@ -3,13 +3,13 @@
         <div class=" row">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-2 text-center">
+                    <div class="col-md-2 col-3 text-center">
                         <router-link :to="{ name: 'Profile', params: { profileId: post.creatorId } }">
                             <img :src="post.creator.picture" :alt="post.creator.name" v-on:error="onImageError"
                                 class="rounded-circle profile-picture">
                         </router-link>
                     </div>
-                    <div class="col-10 d-flex justify-content-between">
+                    <div class="col-md-10 col-9 d-flex justify-content-between">
                         <div>
                             <h4>
                                 {{ post.creator.name }}
@@ -52,7 +52,7 @@
             <div v-if="account.id" class="col-12 text-end d-flex align-items-baseline justify-content-end pe-4 gap-3 my-2">
                 <i @click="toggleLikes(post)" type="button"
                     :class="`text-success mdi fs-3 ${(post.likeIds.includes(account.id)) ? 'mdi-heart' : 'mdi-heart-outline'}`"
-                    :title="post.likes.map(like => like.name).join(',')"></i>
+                    :title="post.likes.map(like => like.name)"></i>
                 <p class="fs-5 ">{{ post.likes.length }}</p>
             </div>
         </div>

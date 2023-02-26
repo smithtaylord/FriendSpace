@@ -3,7 +3,7 @@
 
     <div class="row">
       <!-- Posts Section -->
-      <div class="col-12 px-5 py-2 my-2 ">
+      <div class="col-12 px-md-5 py-2 my-2 ">
         <div v-if="account.id" class=" col-12 my-3 custom-border rounded p-3 pt-4">
           <PostForm />
         </div>
