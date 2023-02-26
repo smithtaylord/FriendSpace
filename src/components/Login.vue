@@ -7,14 +7,14 @@
 
   <div v-else class="container-fluid">
     <div class="row">
-      <div class="col-12 text-dark custom-border2 mt-4 ms-3 p-5">
+      <div class="col-12 text-dark custom-border2 mt-4 ms-md-3 p-md-5">
         <div v-if="account.picture || user.picture">
-          <div class="text-center pb-4">
+          <div class="text-center pb-4 d-none d-md-block">
             <img :src="account.picture || user.picture" alt="account photo"
               class="rounded-circle profile-picture img-fluid" />
           </div>
-          <h5 class="text-primary py-2">{{ account.class }}</h5>
-          <div class="d-flex justify-content-between align-items-baseline gap-3 pb-2">
+          <h5 class="text-primary py-2 d-none d-md-block">{{ account.class }}</h5>
+          <div class="d-flex justify-content-between align-items-baseline gap-3 pb-2 d-none d-md-block">
             <div class="d-flex align-items-baseline gap-3 pb-2">
               <h2 class="text-primary"><b>{{ account.name }}</b></h2>
               <i v-if="account.graduated" class="mdi mdi-school fs-1"></i>
@@ -27,7 +27,7 @@
             </div>
           </div>
         </div>
-        <div class="list-group mt-4">
+        <div class="list-group mt-md-4">
           <router-link :to="{ name: 'Account' }">
             <div class="list-group-item dropdown-item list-group-item-action py-2 my-2 text-primary custom-border2 fs-5">
               <i class="mdi mdi-account-edit me-4"></i> Manage Account

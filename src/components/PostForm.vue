@@ -8,8 +8,8 @@
                     <label for="body">Share something!</label>
                 </div>
                 <div class="mb-3 custom-border2 form-floating">
-                    <input v-model="editable.imgUrl" type="imgUrl" class="form-control" id="imgUrl"
-                        aria-describedby="emailHelp">
+                    <input v-model="editable.imgUrl" type="url" class="form-control" id="imgUrl"
+                        aria-describedby="image-url">
                     <label for="imgUrl" class="form-label" placeholder="picture">Picture</label>
                 </div>
                 <div class="text-end ">

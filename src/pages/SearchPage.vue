@@ -3,7 +3,7 @@
 
         <div class="row">
             <div class="col-12">
-                <h1>PROFILES</h1>
+                <h1 class="text-center p-3 bg-secondary text-light mt-2 rounded custom-border mb-3">PROFILES</h1>
                 <div v-for="p in profiles" class="rounded custom-border">
                     <ProfilesCard :profile="p" />
                 </div>
@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <h1>POSTS</h1>
+                <h1 class="text-center p-3 bg-secondary text-light rounded custom-border">POSTS</h1>
                 <div v-for="p in posts" class="custom-border rounded my-3 p-4">
                     <PostCard :post="p" />
                 </div>
