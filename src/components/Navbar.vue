@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center text-primary">
+      <div class="d-flex flex-column align-items-center text-success">
         <h3><i class="mdi mdi-crowd"></i>FriendSpace</h3>
       </div>
     </router-link>
@@ -20,7 +20,7 @@
           <div class="input-group mb-3">
             <input v-model="editable.query" type="text" class="form-control" placeholder="search...."
               aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn bg-primary text-dark" type="submit" id="button-addon2"><i
+            <button class="btn bg-info text-success" type="submit" id="button-addon2"><i
                 class="mdi mdi-magnify"></i></button>
           </div>
         </form>

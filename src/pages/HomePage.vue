@@ -21,7 +21,7 @@
           <PostCard :post="p" />
         </div>
         <div class="d-flex justify-content-around mb-3">
-          <button @click="changePage('newer')" class="btn bg-secondary text-light posts-button" :disabled="newer == null">
+          <button @click="changePage('newer')" class="btn bg-primary text-success posts-button" :disabled="newer == null">
             Newer
           </button>
           <div>
@@ -29,7 +29,7 @@
               {{ page }}
             </p>
           </div>
-          <button @click="changePage('older')" class="btn bg-secondary text-light posts-button" :disabled="older == null">
+          <button @click="changePage('older')" class="btn bg-primary text-success posts-button" :disabled="older == null">
             Older
           </button>
         </div>

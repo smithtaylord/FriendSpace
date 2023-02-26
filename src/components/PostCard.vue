@@ -46,7 +46,7 @@
             </div>
             <div v-if="account.id" class="col-12 text-end mt-3">
                 <i @click="toggleLikes(post)" type="button"
-                    :class="`text-primary mdi fs-3 ${(post.likeIds.includes(account.id)) ? 'mdi-heart' : 'mdi-heart-outline'}`"></i>
+                    :class="`text-success mdi fs-3 ${(post.likeIds.includes(account.id)) ? 'mdi-heart' : 'mdi-heart-outline'}`"></i>
                 <p v-if="post.likes.length > 0">{{ post.likes.length }}</p>
             </div>
         </div>
