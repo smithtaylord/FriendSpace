@@ -1,48 +1,22 @@
 <template>
   <div v-if="posts.length" class="container-fluid">
-    <!-- <div class="row">
-      <div class="col-md-6 offset-md-6">
-        <form @submit.prevent="searchPostsAndProfiles">
-          <div class="input-group mb-3">
-            <input v-model="editable.query" type="text" class="form-control" placeholder="search...."
-              aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn btn-secondary" type="submit" id="button-addon2"><i class="mdi mdi-magnify"></i></button>
-          </div>
-        </form>
-      </div>
-    </div> -->
+
     <div class="row">
       <!-- Posts Section -->
       <div class="col-12 px-5 py-2 my-2 ">
         <div v-if="account.id" class=" col-12 my-3 custom-border rounded p-3 pt-4">
           <PostForm />
         </div>
-        <div class="col-12 my-3 pt-4 text-end">
-          <i>page {{ page }}</i>
+        <div>
+          <PageButtons />
         </div>
         <div v-for="p in posts" class="col-12 custom-border rounded my-3 pt-4">
           <PostCard :post="p" />
         </div>
-        <div class=" col-12 d-flex justify-content-around my-3 pt-4">
-          <button @click="changePage('newer')" class="btn bg-primary text-success posts-button" :disabled="newer == null">
-            Newer
-          </button>
-          <div>
-            <p>
-              {{ page }}
-            </p>
-          </div>
-          <button @click="changePage('older')" class="btn bg-primary text-success posts-button" :disabled="older == null">
-            Older
-          </button>
+        <div>
+          <PageButtons />
         </div>
       </div>
-      <!-- ADS SECTION -->
-      <!-- <div class="col-3">
-        <div v-for="ad in ads">
-          <AdCard :ad="ad" />
-        </div>
-      </div> -->
 
     </div>
 
@@ -51,7 +25,7 @@
     <Load />
   </div>
 </template>
-
+<!-- TODO I removed ads and my buttons from this page to clean it up, but was curious as to why I needed all of the functions that go with my buttons and ads on this page, I tested it with ads and they stopped loading, is this correct? -->
 <script>
 import { onMounted, computed, ref, onUnmounted } from 'vue';
 import { postsService } from '../services/PostsService.js';

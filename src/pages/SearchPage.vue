@@ -15,20 +15,8 @@
                 <div v-for="p in posts" class="custom-border rounded my-3 p-4">
                     <PostCard :post="p" />
                 </div>
-                <div class=" col-12 d-flex justify-content-around my-3 pt-4">
-                    <button @click="changePage('newer')" class="btn bg-secondary text-light posts-button"
-                        :disabled="newer == null">
-                        Newer
-                    </button>
-                    <div>
-                        <p>
-                            {{ page }}
-                        </p>
-                    </div>
-                    <button @click="changePage('older')" class="btn bg-secondary text-light posts-button"
-                        :disabled="older == null">
-                        Older
-                    </button>
+                <div>
+                    <PageButtons />
                 </div>
             </div>
 

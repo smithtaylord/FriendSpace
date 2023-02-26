@@ -51,7 +51,8 @@
             </div>
             <div v-if="account.id" class="col-12 text-end d-flex align-items-baseline justify-content-end pe-4 gap-3 my-2">
                 <i @click="toggleLikes(post)" type="button"
-                    :class="`text-success mdi fs-3 ${(post.likeIds.includes(account.id)) ? 'mdi-heart' : 'mdi-heart-outline'}`"></i>
+                    :class="`text-success mdi fs-3 ${(post.likeIds.includes(account.id)) ? 'mdi-heart' : 'mdi-heart-outline'}`"
+                    :title="post.likes.map(like => like.name).join(',')"></i>
                 <p class="fs-5 ">{{ post.likes.length }}</p>
             </div>
         </div>

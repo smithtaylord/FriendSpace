@@ -13,6 +13,7 @@
                     <label for="imgUrl" class="form-label">Picture</label>
                 </div>
                 <div class="text-end ">
+                    <!-- TODO Is this the best way to do thi? I noticed that if you opened the modal to edit all your info would populate, but if you did not actually edit your information would still show up in the form at the top of the page? -->
                     <button data-bs-dismiss="modal" aria-label="Close" type="submit"
                         class="btn bg-secondary text-light custom-border2" title="create post"><i
                             class="mdi mdi-send"></i></button>
