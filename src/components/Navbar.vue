@@ -32,6 +32,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { postsService } from '../services/PostsService.js'
 import { profilesService } from '../services/ProfilesService.js'
+import Pop from '../utils/Pop.js'
 import Login from './Login.vue'
 export default {
   setup() {
@@ -41,13 +42,13 @@ export default {
     })
     return {
       editable,
-
+      // THIS FUNCTION IS DIFFERENT THAN THE ONE ON THE SEARCH PAGE
       async searchPostsAndProfiles() {
         try {
-          let searchData = editable.value
+          let searchData = editable.value.query
           await postsService.searchPosts(searchData)
           await profilesService.searchProfiles(searchData)
-          router.push({ name: 'Search', params: { searchTerm: searchData.query } })
+          router.push({ name: 'Search', params: { searchTerm: searchData } })
           editable.value = {}
         } catch (error) {
           Pop.error(error, '[search posts]')

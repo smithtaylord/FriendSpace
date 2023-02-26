@@ -49,6 +49,10 @@ import { onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState.js';
 import { adsService } from '../services/AdsService.js';
+import { postsService } from '../services/PostsService.js';
+import { profilesService } from '../services/ProfilesService.js';
+import { logger } from '../utils/Logger.js';
+import Pop from '../utils/Pop.js';
 
 export default {
     setup() {
@@ -64,10 +68,21 @@ export default {
         function scrollToTop() {
             window.scrollTo(0, 0)
         }
+        async function searchPostsAndProfiles() {
+            try {
+                logger.log(searchTerm, '[search term]')
+                await postsService.searchPosts(searchTerm)
+                await profilesService.searchProfiles(searchTerm)
+
+            } catch (error) {
+                Pop.error(error, '[search posts]')
+            }
+        }
 
         onMounted(() => {
             getAds()
             scrollToTop()
+            searchPostsAndProfiles()
         });
         return {
             searchTerm,
@@ -77,6 +92,7 @@ export default {
             older: computed(() => AppState.olderPage),
             newer: computed(() => AppState.newerPage),
             page: computed(() => AppState.postsPage),
+            // THIS FUNCTION IS DIFFERENT THAN THE ONE IN THE NAV BAR
 
             async changePage(direction) {
 

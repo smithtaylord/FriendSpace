@@ -24,7 +24,7 @@ class PostsService {
 
     async searchPosts(searchData) {
         logger.log(searchData)
-        const res = await api.get('api/posts', { params: { query: searchData.query } })
+        const res = await api.get('api/posts', { params: { query: searchData } })
         logger.log(res.data, '[getting posts by query')
         AppState.posts = res.data.posts.map(p => new Post(p))
         AppState.postsPage = res.data.page
