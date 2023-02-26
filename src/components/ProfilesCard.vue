@@ -10,7 +10,6 @@
                 <h3>{{ profile.name }}</h3>
             </div>
         </div>
-
     </div>
 </template>
 

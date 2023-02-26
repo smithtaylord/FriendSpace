@@ -39,12 +39,10 @@ import { logger } from '../utils/Logger.js';
 import { adsService } from '../services/AdsService.js';
 import AdCard from '../components/AdCard.vue';
 import { profilesService } from '../services/ProfilesService.js';
-import { useRouter } from 'vue-router';
+
 
 export default {
   setup() {
-    // const router = useRouter()
-    // const editable = ref({})
     async function getPosts() {
       try {
         await postsService.getPosts();
@@ -60,7 +58,7 @@ export default {
         Pop.error(error, '[getting ads]')
       }
     }
-
+    // TODO is this the best way to go to the top of the page when you move pages?
     function scrollToTop() {
       window.scrollTo(0, 0)
     }
@@ -69,7 +67,6 @@ export default {
       getAds()
       scrollToTop()
     });
-
     onUnmounted(() => {
       postsService.clearPosts();
       profilesService.clearProfile();
@@ -83,11 +80,8 @@ export default {
       ads: computed(() => AppState.ads),
       account: computed(() => AppState.account),
       profile: computed(() => AppState.profile),
-      // editable,
-
 
       async changePage(direction) {
-
         try {
           if (direction == 'older') {
             logger.log('older')
@@ -98,21 +92,10 @@ export default {
             await postsService.changePage(AppState.newerPage)
             scrollToTop()
           }
-
         } catch (error) {
           Pop.error(error, '[change page]')
         }
       },
-      // async searchPostsAndProfiles() {
-      //   try {
-      //     let searchData = editable.value
-      //     await postsService.searchPosts(searchData)
-      //     await profilesService.searchProfiles(searchData)
-      //     router.push({ name: 'Search', params: { searchTerm: searchData.query } })
-      //   } catch (error) {
-      //     Pop.error(error, '[search posts]')
-      //   }
-      // }
     };
   },
   components: { PostCard, AdCard }

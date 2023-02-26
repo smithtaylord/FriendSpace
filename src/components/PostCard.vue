@@ -18,7 +18,6 @@
                                 {{ post.createdAt }}
                             </p>
                         </div>
-
                         <div v-if="post.creatorId == account.id">
                             <div class="dropdown my-2 pe-3">
                                 <div type="button" class="selectable" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,7 +33,6 @@
                                             class="mdi mdi-trash-can-outline text-danger my-2"></i>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -53,6 +51,7 @@
                 <i @click="toggleLikes(post)" type="button"
                     :class="`text-success mdi fs-3 ${(post.likeIds.includes(account.id)) ? 'mdi-heart' : 'mdi-heart-outline'}`"
                     :title="post.likes.map(like => like.name)"></i>
+                <!-- TODO is this the best way to do this? how would i format this differently so it doesn't so weird with multiple names? -->
                 <p class="fs-5 ">{{ post.likes.length }}</p>
             </div>
         </div>

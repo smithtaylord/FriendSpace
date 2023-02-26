@@ -1,6 +1,5 @@
 <template>
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-12">
                 <h1 class="text-center p-3 bg-secondary text-light mt-2 rounded custom-border mb-3">PROFILES</h1>
@@ -19,15 +18,7 @@
                     <PageButtons />
                 </div>
             </div>
-
-            <!-- <div class="col-3">
-                <div v-for="ad in ads">
-                    <AdCard :ad="ad" />
-                </div>
-            </div> -->
         </div>
-
-
     </div>
 </template>
 
@@ -86,10 +77,8 @@ export default {
             older: computed(() => AppState.olderPage),
             newer: computed(() => AppState.newerPage),
             page: computed(() => AppState.postsPage),
-            // THIS FUNCTION IS DIFFERENT THAN THE ONE IN THE NAV BAR
 
             async changePage(direction) {
-
                 try {
                     if (direction == 'older') {
                         logger.log('older')
@@ -100,7 +89,6 @@ export default {
                         await postsService.changePage(AppState.newerPage)
                         scrollToTop()
                     }
-
                 } catch (error) {
                     Pop.error(error, '[change page]')
                 }

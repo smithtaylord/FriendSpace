@@ -42,7 +42,7 @@ export default {
     })
     return {
       editable,
-      // THIS FUNCTION IS DIFFERENT THAN THE ONE ON THE SEARCH PAGE
+      // TODO THIS FUNCTION IS DIFFERENT THAN THE ONE ON THE SEARCH PAGE, is there another way to make sure this page loads on refresh?
       async searchPostsAndProfiles() {
         try {
           let searchData = editable.value.query

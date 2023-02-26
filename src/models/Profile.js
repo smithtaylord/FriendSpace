@@ -12,3 +12,5 @@ export class Profile {
 
     }
 }
+
+// TODO Is there anything wrong with doing this this way rather than how we did it in class? I am not sure I fully understand why we did it that way?

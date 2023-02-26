@@ -42,7 +42,6 @@ import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { AppState } from '../AppState.js';
 
-// TODO PULL THIS IN FROM THE APPSTATE!
 export default {
 
     setup() {
@@ -53,11 +52,10 @@ export default {
             goToAccountPage() {
                 router.push({ name: 'Account' })
             },
-
+            // TODO is this the right way to replace a broken image?
             onImageError() {
                 event.target.src = 'https://cdn-icons-png.flaticon.com/512/1147/1147254.png'
             }
-
         }
     }
 }

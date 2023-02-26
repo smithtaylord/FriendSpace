@@ -11,9 +11,6 @@
       </div>
     </div>
   </div>
-  <!-- <div class="container custom-border"> -->
-  <!-- <div class="row">
-    <div class="col-md-8 m-auto "> -->
   <div class="p-3 custom-border2">
     <form @submit.prevent="editAccount">
       <div class="row">
@@ -23,7 +20,6 @@
             <label for="floatingInput">Name</label>
           </div>
         </div>
-
         <div class="col-6">
           <div class="form-floating mb-3">
             <input v-model="editable.picture" type="url" class="form-control" id="picture" placeholder="picture">
@@ -31,7 +27,6 @@
           </div>
         </div>
       </div>
-
       <div class="row">
         <div class="col-6">
           <div class="form-floating mb-3 d-flex gap-2">
@@ -46,7 +41,6 @@
             </div>
           </div>
         </div>
-
         <div class="col-6">
           <div class="form-floating mb-3">
             <input v-model="editable.coverImg" type="url" class="form-control" id="coverimg" placeholder="cover image">
@@ -54,7 +48,6 @@
           </div>
         </div>
       </div>
-
       <div class="row">
         <div class="col-6">
           <div class="form-floating mb-3">
@@ -62,7 +55,6 @@
             <label for="floatingInput"><i class="mdi mdi-github"></i> GitHub</label>
           </div>
         </div>
-
         <div class="col-6">
           <div class="form-floating mb-3">
             <input v-model="editable.linkedin" type="url" class="form-control" id="linkedin" placeholder="LinkedIn">
@@ -70,20 +62,13 @@
           </div>
         </div>
       </div>
-
-
-
       <div class="form-floating mb-3">
         <textarea v-model="editable.bio" type="text" class="form-control bio" id="bio" placeholder="bio"></textarea>
         <label for="floatingInput">Bio</label>
       </div>
-
       <button type="submit" class="btn bg-secondary">Save Changes</button>
     </form>
   </div>
-  <!-- </div>
-  </div> -->
-  <!-- </div> -->
 </template>
 
 <script>

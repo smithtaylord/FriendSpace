@@ -88,23 +88,19 @@ export default {
             getPostsByCreatorId();
             getAds()
             scrollToTop()
-            // TODO Is this the best way to do this? This reloads the page if the url changes?
+            // TODO Is this the best way to do this? This reloads the page if the url changes? Issues with changing to my profile if on another profile
             watch(
                 () => route.params.profileId, (newId, oldId) => {
                     if (newId != oldId) {
                         router.go()
                     }
                 })
-
         })
-
         onUnmounted(() => {
             postsService.clearPosts();
             profilesService.clearProfile();
             profilesService.clearProfiles()
         })
-
-
         return {
             posts: computed(() => AppState.posts),
             profile: computed(() => AppState.profile),
@@ -115,7 +111,6 @@ export default {
             account: computed(() => AppState.account),
 
             async changePage(direction) {
-
                 try {
                     if (direction == 'older') {
                         logger.log('older')
@@ -126,7 +121,6 @@ export default {
                         await postsService.changePage(AppState.newerPage)
                         scrollToTop()
                     }
-
                 } catch (error) {
                     Pop.error(error, '[change page]')
                 }

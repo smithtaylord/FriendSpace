@@ -34,7 +34,7 @@ import Pop from '../utils/Pop.js';
 export default {
     setup() {
         const editable = ref({})
-        // ASK if there is a better way to write this?
+        //TODO ASK if there is a better way to write this?
         watchEffect(() => {
             if (AppState.activePost != null) {
                 editable.value = { ...AppState.activePost }
@@ -46,7 +46,6 @@ export default {
             editable,
             async handleSubmit() {
                 try {
-
                     // How did we do the turnary function in class????
                     const formData = editable.value
                     if (editable.value.id) {
