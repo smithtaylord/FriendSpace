@@ -1,14 +1,14 @@
 <template>
-    <div class="PostCard text-dark p-2">
-        <div class="row">
-            <div class="col-10">
+    <div>
+        <div class=" row">
+            <div class="col-12">
                 <div class="row">
-                    <div class="col-1">
+                    <div class="col-2 text-center">
                         <router-link :to="{ name: 'Profile', params: { profileId: post.creatorId } }">
                             <img :src="post.creator.picture" alt="" class="rounded-circle profile-picture">
                         </router-link>
                     </div>
-                    <div class="col-10">
+                    <div class="col-10 d-flex justify-content-between">
                         <div>
                             <h4>
                                 {{ post.creator.name }}
@@ -17,37 +17,40 @@
                                 {{ post.createdAt }}
                             </p>
                         </div>
-                    </div>
-                    <div v-if="post.creatorId == account.id" class="col-1 text-end">
-                        <div class="dropdown my-2">
-                            <div type="button" class="selectable" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="text-primary mdi mdi-dots-horizontal fs-1 "></i>
-                            </div>
-                            <div class="dropdown-menu text-center fs-1">
-                                <div class="list-group">
-                                    <i @click="setPostActive(post)" type="button" class="mdi mdi-lead-pencil my-2"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
-                                </div>
-                                <div class="list-group">
-                                    <i @click="deletePost(post)" type="button"
-                                        class="mdi mdi-trash-can-outline text-danger my-2"></i>
-                                </div>
-                            </div>
 
+                        <div v-if="post.creatorId == account.id">
+                            <div class="dropdown my-2">
+                                <div type="button" class="selectable" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="text-primary mdi mdi-dots-horizontal fs-1 "></i>
+                                </div>
+                                <div class="dropdown-menu text-center fs-1">
+                                    <div class="list-group">
+                                        <i @click="setPostActive(post)" type="button" class="mdi mdi-lead-pencil my-2"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                                    </div>
+                                    <div class="list-group">
+                                        <i @click="deletePost(post)" type="button"
+                                            class="mdi mdi-trash-can-outline text-danger my-2"></i>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 mt-3">
+        </div>
+        <div class="row">
+            <div class="col-12 mt-3 px-4">
                 {{ post.body }}
             </div>
-            <div class="col-8 m-auto mt-3">
+            <div class="mt-3">
                 <img v-if="post.imgUrl" :src="post.imgUrl" alt="" class="post-picture img-fluid">
             </div>
-            <div v-if="account.id" class="col-12 text-end mt-3">
+            <div v-if="account.id" class="col-12 text-end d-flex align-items-baseline justify-content-end pe-4 gap-3 my-2">
                 <i @click="toggleLikes(post)" type="button"
                     :class="`text-success mdi fs-3 ${(post.likeIds.includes(account.id)) ? 'mdi-heart' : 'mdi-heart-outline'}`"></i>
-                <p v-if="post.likes.length > 0">{{ post.likes.length }}</p>
+                <p class="fs-5 ">{{ post.likes.length }}</p>
             </div>
         </div>
 
@@ -119,7 +122,7 @@ export default {
 }
 
 .post-picture {
-    height: 30vh;
+    height: 35vh;
     width: 100%;
     object-fit: cover;
 }

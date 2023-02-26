@@ -13,11 +13,11 @@
     </div> -->
     <div class="row">
       <!-- Posts Section -->
-      <div class="col-9 px-5 py-2 my-2">
+      <div class="col-12 px-5 py-2 my-2">
         <div>
           <PostForm />
         </div>
-        <div v-for="p in posts" class="custom-border rounded my-3 p-4">
+        <div v-for="p in posts" class="col-12 custom-border rounded mx-5 my-3 pt-4">
           <PostCard :post="p" />
         </div>
         <div class="d-flex justify-content-around mb-3">
@@ -35,11 +35,11 @@
         </div>
       </div>
       <!-- ADS SECTION -->
-      <div class="col-3">
+      <!-- <div class="col-3">
         <div v-for="ad in ads">
           <AdCard :ad="ad" />
         </div>
-      </div>
+      </div> -->
 
     </div>
 

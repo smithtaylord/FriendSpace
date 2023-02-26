@@ -6,11 +6,14 @@
   </div>
   <main class="container-fluid">
     <div class="row">
-      <div class="col-2">
+      <div class="col-3">
         <Login />
       </div>
-      <div class="col-10">
+      <div class="col-6">
         <router-view />
+      </div>
+      <div class="col-3">
+        <AdCard />
       </div>
     </div>
   </main>

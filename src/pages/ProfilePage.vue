@@ -1,50 +1,48 @@
 <template>
     <div v-if="profile" class="ProfilePage container-fluid text-dark">
         <!-- Profile Section -->
-        <div class="row">
-            <div class="col-9">
-                <div class="row">
-                    <div class="col-12">
-                        <ProfileDetails />
-                    </div>
-                </div>
 
-                <!-- Create Post Section -->
-                <div class="row">
-                    <div class="col-12">
-                        <div v-if="account.id == profile.id" class="col-12">
-                            <PostForm />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div v-for="p in posts" class=" rounded my-3 p-4 custom-border">
-                            <PostCard :post="p" />
-                        </div>
-                        <div class="d-flex justify-content-around mb-3">
-                            <button @click="changePage('newer')" class="btn bg-secondary text-light posts-button"
-                                :disabled="newer == null">
-                                Newer
-                            </button>
-                            <div>
-                                <p>
-                                    {{ page }}
-                                </p>
-                            </div>
-                            <button @click="changePage('older')" class="btn bg-secondary text-light posts-button"
-                                :disabled="older == null">
-                                Older
-                            </button>
-                        </div>
-                    </div>
+        <div class="row">
+            <div class="col-12">
+                <ProfileDetails />
+            </div>
+        </div>
+
+        <!-- Create Post Section -->
+        <div class="row">
+            <div class="col-12">
+                <div v-if="account.id == profile.id" class="col-12">
+                    <PostForm />
                 </div>
             </div>
-            <div class="col-3">
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div v-for="p in posts" class="custom-border rounded mx-5 my-3 p-4">
+                    <PostCard :post="p" />
+                </div>
+                <div class="d-flex justify-content-around mb-3">
+                    <button @click="changePage('newer')" class="btn bg-secondary text-light posts-button"
+                        :disabled="newer == null">
+                        Newer
+                    </button>
+                    <div>
+                        <p>
+                            {{ page }}
+                        </p>
+                    </div>
+                    <button @click="changePage('older')" class="btn bg-secondary text-light posts-button"
+                        :disabled="older == null">
+                        Older
+                    </button>
+                </div>
+            </div>
+
+            <!-- <div class="col-3">
                 <div v-for="ad in ads">
                     <AdCard :ad="ad" />
                 </div>
-            </div>
+            </div> -->
         </div>
 
     </div>
