@@ -5,7 +5,8 @@
                 <div class="row">
                     <div class="col-2 text-center">
                         <router-link :to="{ name: 'Profile', params: { profileId: post.creatorId } }">
-                            <img :src="post.creator.picture" alt="" class="rounded-circle profile-picture">
+                            <img :src="post.creator.picture" :alt="post.creator.name" v-on:error="onImageError"
+                                class="rounded-circle profile-picture">
                         </router-link>
                     </div>
                     <div class="col-10 d-flex justify-content-between">
@@ -45,7 +46,8 @@
                 {{ post.body }}
             </div>
             <div class="mt-3">
-                <img v-if="post.imgUrl" :src="post.imgUrl" alt="" class="post-picture img-fluid">
+                <img v-if="post.imgUrl" :src="post.imgUrl" :alt="post.creator.name" v-on:error="onImageError"
+                    class="post-picture img-fluid">
             </div>
             <div v-if="account.id" class="col-12 text-end d-flex align-items-baseline justify-content-end pe-4 gap-3 my-2">
                 <i @click="toggleLikes(post)" type="button"
@@ -106,6 +108,10 @@ export default {
                 } catch (error) {
                     Pop.error(error, '[toggle likes]')
                 }
+            },
+
+            onImageError() {
+                event.target.src = 'https://cdn-icons-png.flaticon.com/512/1147/1147254.png'
             }
 
         }

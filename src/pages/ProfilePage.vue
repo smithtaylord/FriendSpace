@@ -53,8 +53,8 @@
 
 
 <script>
-import { onMounted, computed, onUnmounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { onMounted, computed, onUnmounted, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { postsService } from '../services/PostsService.js';
 import { profilesService } from '../services/ProfilesService.js';
 import { AppState } from '../AppState.js';
@@ -63,9 +63,11 @@ import { adsService } from '../services/AdsService.js';
 import { logger } from '../utils/Logger.js';
 
 
+
 export default {
     setup() {
         const route = useRoute();
+        const router = useRouter();
         const profileId = route.params.profileId
         async function getProfileById() {
             try {
@@ -92,11 +94,19 @@ export default {
         function scrollToTop() {
             window.scrollTo(0, 0)
         }
+
         onMounted(() => {
             getProfileById();
             getPostsByCreatorId();
             getAds()
             scrollToTop()
+            // TODO Is this the best way to do this? This reloads the page if the url changes?
+            watch(
+                () => route.params.profileId, (newId, oldId) => {
+                    if (newId != oldId) {
+                        router.go()
+                    }
+                })
 
         })
 
@@ -105,6 +115,8 @@ export default {
             profilesService.clearProfile();
             profilesService.clearProfiles()
         })
+
+
         return {
             posts: computed(() => AppState.posts),
             profile: computed(() => AppState.profile),

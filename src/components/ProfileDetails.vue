@@ -3,11 +3,13 @@
         <div class="col-12">
             <div class="custom-border rounded mt-4">
                 <div>
-                    <img class="img-fluid cover-photo rounded" :src="profile.coverImg" alt="">
+                    <img class="img-fluid cover-photo rounded-top" :src="profile.coverImg" :alt="profile.name"
+                        v-on:error="onImageError">
                 </div>
                 <div class="d-flex justify-content-between align-items-start px-3">
                     <div>
-                        <img class="text-secondary rounded-circle profile-picture" :src="profile.picture" alt="">
+                        <img class="text-secondary rounded-circle profile-picture" :src="profile.picture"
+                            :alt="profile.name" v-on:error="onImageError">
                         <i v-if="profile.graduated" class="mdi mdi-school fs-1"></i>
                     </div>
                     <div>
@@ -50,7 +52,12 @@ export default {
             account: computed(() => AppState.account),
             goToAccountPage() {
                 router.push({ name: 'Account' })
+            },
+
+            onImageError() {
+                event.target.src = 'https://cdn-icons-png.flaticon.com/512/1147/1147254.png'
             }
+
         }
     }
 }

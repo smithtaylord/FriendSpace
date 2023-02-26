@@ -52,10 +52,15 @@
 
 <script>
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { AppState } from '../AppState'
 import { AuthService } from '../services/AuthService'
+import { logger } from '../utils/Logger.js'
 export default {
   setup() {
+    const router = useRouter()
+
+
     return {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
@@ -64,7 +69,7 @@ export default {
       },
       async logout() {
         AuthService.logout({ returnTo: window.location.origin })
-      }
+      },
     }
   }
 }
