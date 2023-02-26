@@ -13,7 +13,8 @@
                     <label for="imgUrl" class="form-label">Picture</label>
                 </div>
                 <div class="text-end ">
-                    <button type="submit" class="btn bg-secondary text-light custom-border2" title="create post"><i
+                    <button data-bs-dismiss="modal" aria-label="Close" type="submit"
+                        class="btn bg-secondary text-light custom-border2" title="create post"><i
                             class="mdi mdi-send"></i></button>
                 </div>
             </form>
