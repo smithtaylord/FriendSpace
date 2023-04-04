@@ -51,20 +51,20 @@ export default {
         Pop.error(error, "[getting posts]");
       }
     }
-    async function getAds() {
-      try {
-        await adsService.getAds()
-      } catch (error) {
-        Pop.error(error, '[getting ads]')
-      }
-    }
+    // async function getAds() {
+    //   try {
+    //     await adsService.getAds()
+    //   } catch (error) {
+    //     Pop.error(error, '[getting ads]')
+    //   }
+    // }
     // TODO is this the best way to go to the top of the page when you move pages?
     function scrollToTop() {
       window.scrollTo(0, 0)
     }
     onMounted(() => {
       getPosts();
-      getAds()
+      // getAds()
       scrollToTop()
     });
     onUnmounted(() => {

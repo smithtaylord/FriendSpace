@@ -8,8 +8,11 @@
 
 
 <script>
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState.js';
+import { adsService } from '../services/AdsService.js';
+import Pop from '../utils/Pop.js';
+
 
 export default {
     // props: {
@@ -19,6 +22,18 @@ export default {
     //     }
     // },
     setup() {
+
+        async function getAds() {
+            try {
+                await adsService.getAds()
+            } catch (error) {
+                Pop.error(error, '[getting ads]')
+            }
+        }
+
+        onMounted(() => {
+            getAds()
+        })
         return {
             ads: computed(() => AppState.ads)
         }
