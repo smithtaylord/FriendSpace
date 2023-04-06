@@ -1,16 +1,22 @@
-CodeWorks Vue Starter
-=====================
-This template is designed to help get students started building vue applications
+# Friend Space
+Welcome to Friend Space! This is an online platform that allows CodeWorks students to stay connected as they continue their journey as software developers. This is my first big application created using Vue.js.
 
-## Legal Overview
+### Features
+_Friend Space allows users to:_
 
-The content under the CodeWorks®, LLC Organization and all of the individual repos are solely intended for use by CodeWorks Instruction to deliver Educational content to CodeWorks Students.
+- Create and update their profile information
+- Search for other CodeWorks students using various search criteria
+- Send friend requests and accept or reject requests from other users
+- View a list of their friends and navigate to their profiles
+- Post messages and comments on a public wall for all users to see
 
----
+### Technology used
+_Friend Space was built using the following technologies:_
 
-## Copyright
+- Client: Vue.js with Vue-Router
+- API: The CodeWorks Alumni Network API
+- Authentication: Auth0
 
-© CodeWorks® LLC, 2021. Unauthorized use and/or duplication of this material without express and written permission from CodeWorks, LLC is strictly prohibited.
 
-
-<img src="https://bcw.blob.core.windows.net/public/img/7815839041305055" width="125">
+### About the project
+Friend Space was created while I at Boise Code Works as a checkpoint project to demonstrate my knowledge of VueJS, working with APIs, and identity management using Auth0.
